@@ -86,7 +86,6 @@ public class ETCScheduledTask {
                             TransactionManager transactionManager = new ReadonlyTransactionManager(web3j, transaction.getFrom());
                             contract = new AbstractContract(web3j, transaction.getTo(), transactionManager, BigInteger.ZERO, BigInteger.ONE) {
                             };
-                            tran.setChanTypeEnum(ChanTypeEnum.OTHER_ETH);
                             Request<?, EthGetTransactionReceipt> ethGetTransactionReceiptRequest1 = web3j.ethGetTransactionReceipt(transaction.getHash());
                             List<EventValues> eventValues = contract.processEvent(ethGetTransactionReceiptRequest1.send().getResult());
                             BigDecimal bigDecimal = Convert.fromWei(eventValues.get(0).getNonIndexedValues().get(0).getValue().toString(), Convert.Unit.ETHER);
