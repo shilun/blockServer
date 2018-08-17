@@ -54,7 +54,6 @@ public class ETCScheduledTask {
     public void reportCurrentTime() {
         if (!running.getAndSet(true)) {
             Integer blockHight = getLatestBlockNumber();
-            blockHight = 50000;
             BlockInfo lastBlock = blockInfoService.findLastBlock(ChanTypeEnum.ETH);
             Integer dbHight = null;
             if (lastBlock == null) {
