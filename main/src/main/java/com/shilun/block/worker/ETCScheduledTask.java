@@ -64,7 +64,7 @@ public class ETCScheduledTask {
                 dbHight++;
             }
             if (blockHight > dbHight.intValue()) {
-                EthBlock block = getBlock(6157273);
+                EthBlock block = getBlock(dbHight);
 
                 List<EthBlock.TransactionResult> transactions = block.getBlock().getTransactions();
                 try {
@@ -81,7 +81,7 @@ public class ETCScheduledTask {
                             BigDecimal bigDecimal = Convert.fromWei(transaction.getValue().toString(), Convert.Unit.ETHER);
                             tran.setValue(bigDecimal);
                             tran.setChanTypeEnum(ChanTypeEnum.ETH);
-                        //代币
+                            //代币
                         } else {
                             AbstractContract contract = null;
                             TransactionManager transactionManager = new ReadonlyTransactionManager(web3j, transaction.getFrom());
